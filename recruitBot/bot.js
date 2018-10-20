@@ -11,11 +11,12 @@ class MyBot {
    *
    * @param {ConversationState} conversation state object
    */
-    constructor(conversationState) {
+    constructor(conversationState, userState) {
     // Creates a new state accessor property.
     // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors.
         this.countProperty = conversationState.createProperty(TURN_COUNTER_PROPERTY);
         this.conversationState = conversationState;
+        this.userState = userState;
     }
     /**
    *
