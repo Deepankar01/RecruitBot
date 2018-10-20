@@ -1,0 +1,12 @@
+language: node_js
+before_install:
+  - cd recruitBot
+cache:
+  directories:
+    - "node_modules"
+install:
+  - npm install      
+jobs:
+  include:
+    - stage: unit tests
+      script: "npm test"
