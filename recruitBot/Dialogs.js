@@ -1,15 +1,16 @@
-const Properties = require('./properties');
+const messages = require('./staticData/messages');
+const Properties = require('./properties'); ;
 const { ChoicePrompt, DialogSet, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 
 class Dialogs {
     initiateDialogs(dialogState) {
         this.dialogs = new DialogSet(dialogState);
 
-        this.dialogs.add(new TextPrompt(Properties.NAME_PROMPT));
+        this.dialogs.add(new TextPrompt(Properties.GREET_CANDIDATE));
 
         // Create a dialog that asks the user for their name.
         this.dialogs.add(new WaterfallDialog(Properties.WHO_ARE_YOU, [
-            this.promptForName.bind(this),
+            this.greetCandidate.bind(this),
             this.captureName.bind(this)
         ]));
 
@@ -18,8 +19,8 @@ class Dialogs {
             this.displayProfile.bind(this)
         ]));
     }
-    async promptForName(step) {
-        return await step.prompt(Properties.NAME_PROMPT, `What is your name, human?`);
+    async greetCandidate(step) {
+        return await step.prompt(Properties.GREET_CANDIDATE, messages.greet);
     }
 
     async displayProfile(step) {
