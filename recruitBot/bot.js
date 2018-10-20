@@ -1,40 +1,42 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
 
-const { ActivityTypes } = require('botbuilder');
+const Properties = require('./properties');
+const Dialogs = require('./Dialogs');
+// const { ActivityTypes } = require('botbuilder');
 
-// Turn counter property
-const TURN_COUNTER_PROPERTY = 'turnCounterProperty';
-
-class MyBot {
+class MyBot extends Dialogs {
     /**
    *
-   * @param {ConversationState} conversation state object
+   * @param {ConversationState, UserState} conversation state object
    */
     constructor(conversationState, userState) {
-    // Creates a new state accessor property.
-    // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors.
-        this.countProperty = conversationState.createProperty(TURN_COUNTER_PROPERTY);
+        super();
         this.conversationState = conversationState;
         this.userState = userState;
+
+        this.dialogState = this.conversationState.createProperty(Properties.DIALOG_STATE_PROPERTY);
+        this.userProfile = this.userState.createProperty(Properties.USER_PROFILE_PROPERTY);
+        this.initiateDialogs(this.dialogState);
     }
+
     /**
    *
    * @param {TurnContext} on turn context object.
    */
     async onTurn(turnContext) {
-    // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
-        if (turnContext.activity.type === ActivityTypes.Message) {
-            // read from state.
-            let count = await this.countProperty.get(turnContext);
-            count = count === undefined ? 1 : ++count;
-            await turnContext.sendActivity(`${ count }: You said "${ turnContext.activity.text }"`);
-            // increment and set turn counter.
-            await this.countProperty.set(turnContext, count);
-        } else {
-            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
+        const dc = await this.dialogs.createContext(turnContext);
+        await dc.continueDialog();
+        if (!turnContext.responded) {
+            const user = await this.userProfile.get(dc.context, {});
+            if (user.name) {
+                await dc.beginDialog(Properties.CANDIDATE_SUBMIT_SUCCESS);
+            } else {
+                await dc.beginDialog(Properties.WHO_ARE_YOU);
+            }
         }
-        // Save state changes
+        // Save changes to the user state.
+        await this.userState.saveChanges(turnContext);
+
+        // End this turn by saving changes to the conversation state.
         await this.conversationState.saveChanges(turnContext);
     }
 }

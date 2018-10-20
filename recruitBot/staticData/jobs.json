@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "name": "Javascript Developer",
+        "Description": "An awesome guy needed",
+        "Skills": ["Javascript", "Node.js", "Webpack"],
+        "isAvailable": true,
+        "experienceRequired": "1-2",
+        "postingDate": "13/12/2016"
+    },
+    {
+        "id": "2",
+        "name": "Senior Javascript Developer",
+        "Description": "An awesome guy needed",
+        "Skills": ["Javascript", "Node.js", "Webpack"],
+        "isAvailable": true,
+        "experienceRequired": "4-5",
+        "postingDate": "13/12/2016"
+    },
+    {
+        "id": "3",
+        "name": "Principal Javascript Developer",
+        "Description": "An awesome guy needed",
+        "Skills": ["Javascript", "Node.js", "Webpack"],
+        "isAvailable": true,
+        "experienceRequired": "6-9",
+        "postingDate": "13/12/2016"
+    }
+]
