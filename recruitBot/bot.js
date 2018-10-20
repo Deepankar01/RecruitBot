@@ -27,7 +27,7 @@ class MyBot extends Dialogs {
         await dc.continueDialog();
         if (!turnContext.responded) {
             const user = await this.userProfile.get(dc.context, {});
-            if (user.name) {
+            if (user.job) {
                 await dc.beginDialog(Properties.CANDIDATE_SUBMIT_SUCCESS);
             } else {
                 await dc.beginDialog(Properties.WHO_ARE_YOU);
