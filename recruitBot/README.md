@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/Deepankar01/RecruitBot/badge.svg?branch=master)](https://coveralls.io/github/Deepankar01/RecruitBot?branch=master)
+
 # recruitBot
 build bot for recruitment
 
