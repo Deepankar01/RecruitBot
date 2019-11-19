@@ -28,6 +28,6 @@
         "eslint-plugin-standard": "^4.0.0",
         "nodemon": "^1.18.4",
         "@types/node": "10.10.2",
-        "@types/restify": "7.2.4"
+        "@types/restify": "8.4.2"
     }
 }
