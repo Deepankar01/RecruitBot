@@ -17,7 +17,7 @@
         "botbuilder-dialogs": "^4.0.8",
         "botframework-config": "^4.0.6",
         "dotenv": "^6.0.0",
-        "restify": "^6.3.4"
+        "restify": "^8.5.1"
     },
     "devDependencies": {
         "eslint": "^5.6.0",
