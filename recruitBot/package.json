@@ -12,7 +12,7 @@
         "watch": "nodemon ./index.js"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "botbuilder": "^4.0.6",
         "botbuilder-dialogs": "^4.0.8",
         "botframework-config": "^4.0.6",
