@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
-        "botbuilder": "^4.0.6",
+        "botbuilder": "^4.8.0",
         "botbuilder-dialogs": "^4.0.8",
         "botframework-config": "^4.0.6",
         "dotenv": "^6.0.0",
